@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>BT</groupId>
+  <artifactId>Ata_Case_Study_Ertugrul_Donmez</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.source>20</maven.compiler.source>
+    <maven.compiler.target>20</maven.compiler.target>
+
+    <!-- Dependency versions -->
+
+    <selenium.version>4.11.0</selenium.version>
+    <bonigarcia.webdrivermanager.version>5.1.1</bonigarcia.webdrivermanager.version>
+
+    <restassured.version>5.3.0</restassured.version>
+    <restassured.json.version>5.3.0</restassured.json.version>
+    <restassured.xml.version>5.3.0</restassured.xml.version>
+    <lombok.version>1.18.26</lombok.version>
+    <gson.version>2.10.1</gson.version>
+
+    <cucumber.java.version>7.11.1</cucumber.java.version>
+    <cucumber.junit.version>7.11.1</cucumber.junit.version>
+    <cucumber.reporting.version>5.6.0</cucumber.reporting.version>
+
+    <apache.poi.version>5.2.3</apache.poi.version>
+    <jackson.core.version>2.14.2</jackson.core.version>
+    <slf4j.version>2.0.6</slf4j.version>
+    <logback.classic.version>1.4.7</logback.classic.version>
+
+    <!-- Plugin Versions  -->
+    <maven.surefire.plugin.version>3.0.0-M9</maven.surefire.plugin.version>
+    <maven.cucumber.reporting.plugin.version>5.7.4</maven.cucumber.reporting.plugin.version>
+    <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+
+  </properties>
+
+  <dependencies>
+    <!-- Selenium WebDriver -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+
+
+    <!-- Cucumber-JVM dependencies -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.java.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>${cucumber.junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>5.3.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-path</artifactId>
+      <version>${restassured.json.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>xml-path</artifactId>
+      <version>${restassured.xml.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Apache POI to  Java libraries for reading and writing files in Microsoft Office formats -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${apache.poi.version}</version>
+    </dependency>
+
+    <!-- Gson to serialize and deserialize Java objects to JSONs -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+
+    <!-- Lombok to automate the generation of Java Beans getters and setters by using annotations -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.3.2</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.core.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.classic.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.6.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.hierynomus/sshj -->
+    <dependency>
+      <groupId>com.hierynomus</groupId>
+      <artifactId>sshj</artifactId>
+      <version>0.36.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.jcraft</groupId>
+      <artifactId>jsch</artifactId>
+      <version>0.1.54</version>
+      <scope>test</scope>
+    </dependency>
+
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <!-- Maven Surefire Plugin for running tests -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.plugin.version}</version>
+        <configuration>
+          <!-- Run only test files that match the pattern **/CukesRunner.java -->
+          <includes>
+            <include>**/CukesRunner.java</include>
+          </includes>
+
+          <!-- Continue running tests even if some of them fail -->
+          <testFailureIgnore>true</testFailureIgnore>
+
+          <!-- Order the tests by method name in alphabetical order -->
+          <runOrder>alphabetical</runOrder>
+
+          <!-- Run each test method in a separate thread -->
+          <parallel>methods</parallel>
+
+          <!-- Use 3 threads for parallel execution -->
+          <threadCount>3</threadCount>
+
+          <!-- Use a fixed number of threads, regardless of CPU cores -->
+          <perCoreThreadCount>false</perCoreThreadCount>
+
+          <!-- Use 2 processes per CPU core for test execution -->
+          <forkCount>2C</forkCount>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.masterthought</groupId>
+        <artifactId>maven-cucumber-reporting</artifactId>
+        <version>${maven.cucumber.reporting.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>execution</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <projectName>Cucumber HTML Reports</projectName>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <inputDirectory>${project.build.directory}</inputDirectory>
+              <jsonFiles>
+                <param>**/cucumber*.json</param>
+              </jsonFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.plugin.version}</version>
+        <configuration>
+          <source>20</source>
+          <target>20</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
